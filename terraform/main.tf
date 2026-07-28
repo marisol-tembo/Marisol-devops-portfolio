@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "website" {
-  bucket = "marisol-tembo-bucket"
+  bucket = "tembo-rico-bucket"
 
   tags = {
     Name      = "marisol-devops-portfolio"
