@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "website" {
-  bucket = "los-tembos-bucket"
+  bucket = "tembo-family-bucket"
 
   tags = {
     Project   = "marisol-devops-portfolio"
