@@ -2,9 +2,8 @@ name: Terraform Checks
 
 on:
   pull_request:
-    paths:
-      - "terraform/**"
-      - ".github/workflows/terraform-check.yml"
+    branches:
+      - main
 
 jobs:
   terraform-checks:
