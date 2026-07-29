@@ -6,14 +6,14 @@ on:
       - main
 
 jobs:
-  terraform-checks:
-    name: Format and validate Terraform
+  terraform-deploy:
+    name: Validate and deploy Terraform
     runs-on: ubuntu-latest
 
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY}}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_DEFAULT_REGION: "us-east-2" 
+      AWS_DEFAULT_REGION: us-east-2
 
     defaults:
       run:
@@ -21,10 +21,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v4
+        uses: hashicorp/setup-terraform@v3
 
       - name: Check Terraform formatting
         run: terraform fmt -check -recursive
@@ -35,9 +35,21 @@ jobs:
       - name: Validate Terraform
         run: terraform validate
 
-      - name: Terraform Plan
+      - name: Terraform plan
         run: terraform plan -out=tfplan
-      
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main'
+
+      - name: Terraform apply
         run: terraform apply -auto-approve tfplan
+
+      - name: Read website bucket name
+        id: bucket
+        run: |
+          BUCKET_NAME=$(terraform output -raw website_bucket_name)
+          echo "name=$BUCKET_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Upload website to S3
+        working-directory: .
+        run: |
+          aws s3 sync website/ \
+            "s3://${{ steps.bucket.outputs.name }}" \
+            --delete
