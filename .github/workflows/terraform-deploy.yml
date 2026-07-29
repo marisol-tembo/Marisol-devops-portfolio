@@ -53,3 +53,11 @@ jobs:
           aws s3 sync website/ \
             "s3://${{ steps.bucket.outputs.name }}" \
             --delete
+
+      - name: Invalidate CloudFront cache
+        run: |
+            DISTRIBUTION_ID=$(terraform output -raw cloudfront_distribution_id)
+
+            aws cloudfront create-invalidation \
+             --distribution-id "$DISTRIBUTION_ID" \
+             --paths "/*"
