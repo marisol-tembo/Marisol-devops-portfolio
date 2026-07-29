@@ -53,3 +53,7 @@ jobs:
           aws s3 sync website/ \
             "s3://${{ steps.bucket.outputs.name }}" \
             --delete
+            
+      - name: Display website URL
+        run: |
+        echo "Website URL: $(terraform output -raw website_url)"
