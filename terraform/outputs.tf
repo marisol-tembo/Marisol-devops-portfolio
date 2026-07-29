@@ -3,7 +3,12 @@ output "website_bucket_name" {
   value       = aws_s3_bucket.website.bucket
 }
 
-output "website_url" {
-  description = "S3 static website endpoint"
-  value       = aws_s3_bucket_website_configuration.website.website_endpoint
+output "cloudfront_domain_name" {
+  description = "CloudFront domain for the portfolio website"
+  value       = aws_cloudfront_distribution.website.domain_name
+}
+
+output "cloudfront_url" {
+  description = "HTTPS URL for the portfolio website"
+  value       = "https://${aws_cloudfront_distribution.website.domain_name}"
 }
