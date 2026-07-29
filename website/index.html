@@ -1,31 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marisol's DevOps Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marisol | DevOps Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #f8f6ff, #eef7ff);
+      color: #2d2d2d;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 48px 36px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background-color: #f1ecff;
+      color: #6b4fd3;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      color: #1f1f1f;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      background-color: #6b4fd3;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a3fc0;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 36px 24px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main>
-    <h1>The Tembo Family</h1>
-
+  <main class="card">
+    <div class="tag">DevOps Portfolio</div>
+    <h1>Hello, I'm Marisol</h1>
     <p>
-      I am building practical experience with AWS, Terraform,
-      CI/CD pipelines, and Infrastructure as Code.
+      I am building my career in DevOps with a strong focus on cloud,
+      automation, Infrastructure as Code, and CI/CD. This portfolio is part of
+      my journey to grow my skills and create real-world projects.
     </p>
-    <p>This website is deployed through a DevOps pipeline.</p>
-
-    <p>Almost there my loves</p>
-
-    <h2>Skills</h2>
-
-    <ul>
-      <li>AWS</li>
-      <li>Terraform</li>
-      <li>GitHub Actions</li>
-      <li>Linux</li>
-    </ul>
+    <a href="#" class="button">My Journey</a>
   </main>
 </body>
 </html>
